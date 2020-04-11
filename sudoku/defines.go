@@ -1,4 +1,4 @@
-package simplesudoku
+package sudoku
 
 import "fmt"
 
@@ -70,8 +70,8 @@ func (s *SudokuT) SetFromArray(l []int) error {
 		}
 	}
 
-	if index != 80 {
-		return fmt.Errorf("Something Went Wrong setting the sudoku from array")
+	if index != 81 {
+		return fmt.Errorf("Something Went Wrong setting the sudoku from array. index = %v", index)
 	}
 
 	return nil
