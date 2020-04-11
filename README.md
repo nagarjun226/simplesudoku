@@ -39,3 +39,4 @@ Request is a JSON containing an integer array.
 - Testing
 - handle edge cases in solver
 - API handler accepts list of lists input
+- Dockerize
