@@ -5,6 +5,7 @@ A simple Golang package that computes the solution to a given Sudoku puzzle usin
 - `/sudoku` - This is the main package that handles solving a sudoku
 - `/api` - defines the handler funcs and the API that the app will expose
 
+## Run
 - `go run main.go` runs the sudoku solver as a server on specified port. Submit a Get request with te incomplete Sudoku as the body
 
 ## API Usage
