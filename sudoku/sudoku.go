@@ -69,3 +69,47 @@ func (s *SudokuT) ValidMove(row, column, n int) (bool, error) {
 
 	return true, nil
 }
+
+// IsComplete - returns a boolean stating if this sudoku has blank spaces or not
+func (s *SudokuT) IsComplete() bool {
+	for r := range s {
+		for c := range s[r] {
+			if s[r][c] == 0 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+// Solve - Solve the Sudoku using backtracking. Returns only a single solution
+// A valid sudoku will be a 9x9 grid with numbers from 0 - 9 where the number 0 indicates a blank slot. Any other input will result in an error
+// A good Sudoku has only one solution, although a sudoku can potentially have many solutions (For now we return the first found solution)
+func Solve(s *SudokuT) bool {
+
+	if s.IsComplete() {
+		return true
+	}
+
+	for r := range s {
+		for c := range s[r] {
+			if s[r][c] == 0 {
+				for num := 1; num <= 9; num++ {
+					valid, err := s.ValidMove(r, c, num)
+					if err != nil {
+						panic(err)
+					}
+					if valid {
+						s.SetElement(r, c, num)
+						if Solve(s) {
+							return true
+						}
+						s[r][c] = 0
+					}
+				}
+				return false
+			}
+		}
+	}
+	return false
+}
